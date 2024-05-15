@@ -89,7 +89,9 @@ function clearTable() {
 // refresh table
 function refreshTable() {
   clearTable();
+  addTableHeader("Title", "Author", "Pages", "Read");
   libraryToTable();
+  attachDeleteEventListeners();
 }
 
 libraryToTable();
@@ -123,3 +125,16 @@ confirmBtn.addEventListener("click", (event) => {
 // Need to loop through all delete buttons and have onclick delete function
 // that will delete the book from myLibrary and refresh the table using
 // refreshTable() function
+
+function attachDeleteEventListeners() {
+  let deleteButtons = document.querySelectorAll('.deleteBook')
+
+  for (i of deleteButtons) {
+    i.addEventListener('click', function() {
+      myLibrary.splice(this.dataset.id, 1);
+      refreshTable();
+    })
+  }
+}
+
+attachDeleteEventListeners();
