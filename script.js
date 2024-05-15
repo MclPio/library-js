@@ -9,6 +9,10 @@ function Book(title, author, pages, read) {
   this.info = function () {
     console.log(`${title} by ${author}, ${pages} pages, read: ${read}`)
   }
+
+  this.toggleRead = () => {
+    this.read = !this.read
+  }  
 }
 
 function addBookToLibrary(book) {
@@ -112,7 +116,6 @@ showButton.addEventListener("click", () => {
   favDialog.showModal();
 });
 
-
 confirmBtn.addEventListener("click", (event) => {
   event.preventDefault();
   addedBook = new Book(inputTitle.value, inputAuthor.value, inputPages.value, inputRead.checked);
@@ -122,10 +125,6 @@ confirmBtn.addEventListener("click", (event) => {
 });
 
 // click event for delete button
-// Need to loop through all delete buttons and have onclick delete function
-// that will delete the book from myLibrary and refresh the table using
-// refreshTable() function
-
 function attachDeleteEventListeners() {
   let deleteButtons = document.querySelectorAll('.deleteBook')
 
