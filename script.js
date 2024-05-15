@@ -47,6 +47,11 @@ function addTableData() {
 
   // Add the row data
   for (let i = 0; i < arguments.length; i++) {
+    // filter button out of insertion
+    if (arguments[i] instanceof HTMLElement) {
+      tr.appendChild(arguments[i])
+      continue
+    }
     const td = document.createElement("td");
     const data = document.createTextNode(arguments[i]);
     td.appendChild(data)
@@ -65,7 +70,14 @@ function libraryToTable() {
     const pages = book.pages;
     const read = book.read;
 
-    addTableData(title, author, pages, read)
+    // make a delete button
+    const deleteButton = document.createElement("button");
+    deleteButton.setAttribute("data-id", i);
+    deleteButton.className = "deleteBook";
+    deleteButton.innerText = "Delete";
+    
+    // insert delete button into dom
+    addTableData(title, author, pages, read, deleteButton);
   }
 }
 
@@ -106,3 +118,8 @@ confirmBtn.addEventListener("click", (event) => {
   refreshTable();
   favDialog.close();
 });
+
+// click event for delete button
+// Need to loop through all delete buttons and have onclick delete function
+// that will delete the book from myLibrary and refresh the table using
+// refreshTable() function
