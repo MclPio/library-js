@@ -8,27 +8,19 @@
 </head>
 <body id="body">
   <script src="script.js" defer></script>
-  <dialog id="favDialog" class="modal-background">
+  <dialog id="favDialog">
     <form>
-      <div class="field">
-        <label for="title" class="label">Title</label>
-        <div class="control"><input type="text" id="title" name="title" class="input"></div>
-      </div>
-      <div class="field">
-        <label for="author" class="label">Author</label>
-        <div class="control"><input type="text" id="author" name="author" class="input"></div>
-      </div>
-      <div class="field">
-        <label for="pages" class="label">Pages</label>
-        <div class="control"><input type="number" id="pages" name="pages" class="input"></div>
-      </div>
-      <div class="field">
-        <label for="read" class="label">Read</label>
-        <div class="control"><input type="checkbox" id="read" name="read" class="checkbox"><br/><br/></div>
-      </div>
-      <div class="buttons">
-        <button value="cancel" formmethod="dialog" class="button is-link">Cancel</button>
-        <div class="control"><button id="confirmBtn" value="default" class="button is-primary">Confirm</button></div>
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title">
+      <label for="author">Author</label>
+      <input type="text" id="author" name="author">
+      <label for="pages">Pages</label>
+      <input type="number" id="pages" name="pages">
+      <label for="read">Read</label>
+      <input type="checkbox" id="read" name="read"><br/><br/>
+      <div>
+        <button value="cancel" formmethod="dialog">Cancel</button>
+        <button id="confirmBtn" value="default">Confirm</button>
       </div>
     </form>
   </dialog>

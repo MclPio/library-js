@@ -29,20 +29,17 @@ addBookToLibrary(test2);
 
 // Create table
 const table = document.createElement("table");
-table.className = "table"
 const body = document.getElementById("body");
 body.appendChild(table);
 
 function addTableHeader() {
   // Create the row
   const tr = document.createElement("tr");
-  tr.className = "tr"
   table.appendChild(tr);
 
   // Add the row data
   for (let i = 0; i < arguments.length; i++) {
     const th = document.createElement("th");
-    th.className = "thead"
     const data = document.createTextNode(arguments[i]);
     th.appendChild(data)
     tr.appendChild(th);
@@ -52,7 +49,6 @@ function addTableHeader() {
 function addTableData() {
   // Create the row
   const tr = document.createElement("tr");
-  tr.className = "tr"
   table.appendChild(tr);
 
   // Add the row data
@@ -63,7 +59,6 @@ function addTableData() {
       continue
     }
     const td = document.createElement("td");
-    td.className = "td"
     const data = document.createTextNode(arguments[i]);
     td.appendChild(data)
     tr.appendChild(td);
@@ -84,13 +79,13 @@ function libraryToTable() {
     // make a delete button
     const deleteButton = document.createElement("button");
     deleteButton.setAttribute("data-id", i);
-    deleteButton.className = "deleteBook button is-danger";
+    deleteButton.className = "deleteBook";
     deleteButton.innerText = "Delete";
 
     // make a read button
     const readButton = document.createElement("button");
     readButton.setAttribute("data-id", i);
-    readButton.className = "readBook button is-info";
+    readButton.className = "readBook";
     readButton.innerText = "Read?"
     
     // insert delete button into dom
@@ -115,7 +110,7 @@ function refreshTable() {
 libraryToTable();
 // dialog
 const showButton = document.getElementById("showDialog");
-showButton.className = "button is-link"
+showButton.className = "button"
 const favDialog = document.getElementById("favDialog");
 const outputBox = document.querySelector("output");
 const confirmBtn = favDialog.querySelector("#confirmBtn");
