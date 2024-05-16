@@ -1,32 +1,3 @@
-const myLibrary = [];
-
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read
-
-  this.info = function () {
-    console.log(`${title} by ${author}, ${pages} pages, read: ${read}`)
-  }
-
-  this.toggleRead = () => {
-    this.read = !this.read
-  }  
-}
-
-// function to add on click event for each entry that calls toggleRead()
-
-function addBookToLibrary(book) {
-  myLibrary.push(book)
-}
-
-test = new Book('hobbit', 'jrr', 550, false);
-test2 = new Book('book2', 'jo mo', 120, true);
-
-addBookToLibrary(test);
-addBookToLibrary(test2);
-
 // Create table
 const table = document.createElement("table");
 const body = document.getElementById("body");
@@ -46,6 +17,8 @@ function addTableHeader() {
   }
 }
 
+// inserts data to table. first 4 arguments are data, next 2 arguments are html objects
+// addTableData(string, string, number, boolean, htmlObject, htmlObject)
 function addTableData() {
   // Create the row
   const tr = document.createElement("tr");
@@ -64,8 +37,6 @@ function addTableData() {
     tr.appendChild(td);
   }
 }
-
-addTableHeader("Title", "Author", "Pages", "Read");
 
 // gets all books to display on html table
 function libraryToTable() {
@@ -107,33 +78,6 @@ function refreshTable() {
   attachReadEventListeners();
 }
 
-libraryToTable();
-// dialog
-const showButton = document.getElementById("showDialog");
-showButton.className = "button"
-const favDialog = document.getElementById("favDialog");
-const outputBox = document.querySelector("output");
-const confirmBtn = favDialog.querySelector("#confirmBtn");
-
-// form inputs
-const inputTitle = document.getElementById("title");
-const inputAuthor = document.getElementById("author");
-const inputPages = document.getElementById("pages");
-const inputRead = document.getElementById("read");
-
-// "Show the dialog" button opens the <dialog> modally
-showButton.addEventListener("click", () => {
-  favDialog.showModal();
-});
-
-confirmBtn.addEventListener("click", (event) => {
-  event.preventDefault();
-  addedBook = new Book(inputTitle.value, inputAuthor.value, inputPages.value, inputRead.checked);
-  addBookToLibrary(addedBook);
-  refreshTable();
-  favDialog.close();
-});
-
 // click event for delete button
 function attachDeleteEventListeners() {
   let deleteButtons = document.querySelectorAll('.deleteBook');
@@ -158,5 +102,4 @@ function attachReadEventListeners() {
   }
 }
 
-attachDeleteEventListeners();
-attachReadEventListeners();
+refreshTable();
