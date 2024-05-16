@@ -15,6 +15,8 @@ function Book(title, author, pages, read) {
   }  
 }
 
+// function to add on click event for each entry that calls toggleRead()
+
 function addBookToLibrary(book) {
   myLibrary.push(book)
 }
@@ -27,17 +29,20 @@ addBookToLibrary(test2);
 
 // Create table
 const table = document.createElement("table");
+table.className = "table"
 const body = document.getElementById("body");
 body.appendChild(table);
 
 function addTableHeader() {
   // Create the row
   const tr = document.createElement("tr");
+  tr.className = "tr"
   table.appendChild(tr);
 
   // Add the row data
   for (let i = 0; i < arguments.length; i++) {
     const th = document.createElement("th");
+    th.className = "thead"
     const data = document.createTextNode(arguments[i]);
     th.appendChild(data)
     tr.appendChild(th);
@@ -47,6 +52,7 @@ function addTableHeader() {
 function addTableData() {
   // Create the row
   const tr = document.createElement("tr");
+  tr.className = "tr"
   table.appendChild(tr);
 
   // Add the row data
@@ -57,6 +63,7 @@ function addTableData() {
       continue
     }
     const td = document.createElement("td");
+    td.className = "td"
     const data = document.createTextNode(arguments[i]);
     td.appendChild(data)
     tr.appendChild(td);
@@ -77,11 +84,17 @@ function libraryToTable() {
     // make a delete button
     const deleteButton = document.createElement("button");
     deleteButton.setAttribute("data-id", i);
-    deleteButton.className = "deleteBook";
+    deleteButton.className = "deleteBook button is-danger";
     deleteButton.innerText = "Delete";
+
+    // make a read button
+    const readButton = document.createElement("button");
+    readButton.setAttribute("data-id", i);
+    readButton.className = "readBook button is-info";
+    readButton.innerText = "Read?"
     
     // insert delete button into dom
-    addTableData(title, author, pages, read, deleteButton);
+    addTableData(title, author, pages, read, deleteButton, readButton);
   }
 }
 
@@ -96,11 +109,13 @@ function refreshTable() {
   addTableHeader("Title", "Author", "Pages", "Read");
   libraryToTable();
   attachDeleteEventListeners();
+  attachReadEventListeners();
 }
 
 libraryToTable();
 // dialog
 const showButton = document.getElementById("showDialog");
+showButton.className = "button is-link"
 const favDialog = document.getElementById("favDialog");
 const outputBox = document.querySelector("output");
 const confirmBtn = favDialog.querySelector("#confirmBtn");
@@ -126,7 +141,7 @@ confirmBtn.addEventListener("click", (event) => {
 
 // click event for delete button
 function attachDeleteEventListeners() {
-  let deleteButtons = document.querySelectorAll('.deleteBook')
+  let deleteButtons = document.querySelectorAll('.deleteBook');
 
   for (i of deleteButtons) {
     i.addEventListener('click', function() {
@@ -136,4 +151,17 @@ function attachDeleteEventListeners() {
   }
 }
 
+// click event for read? button
+function attachReadEventListeners() {
+  let readButtons = document.querySelectorAll('.readBook');
+
+  for (i of readButtons) {
+    i.addEventListener('click', function() {
+      myLibrary[this.dataset.id].toggleRead();
+      refreshTable();
+    })
+  }
+}
+
 attachDeleteEventListeners();
+attachReadEventListeners();
