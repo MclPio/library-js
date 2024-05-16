@@ -1,6 +1,6 @@
 # library-js
-* [project-requirements]("https://www.theodinproject.com/lessons/javascript-library")
-* [live-deployment]("http://www.michaelpious.com/library-js/")
+* [project-requirements](https://www.theodinproject.com/lessons/javascript-library)
+* [live-deployment](http://www.michaelpious.com/library-js/)
 
 **Goal**: create objects constructors and implement with prototypal inheritance
 
