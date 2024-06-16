@@ -1,18 +1,20 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read
-
-  this.info = function () {
-    console.log(`${title} by ${author}, ${pages} pages, read: ${read}`)
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+  
+  info () {
+    console.log(`${this.title} by ${this.author}, ${this.pages} pages, read: ${this.read}`)
   }
 
-  this.toggleRead = () => {
+  toggleRead() {
     this.read = !this.read
-  }  
+  }
 }
 
 // function to add on click event for each entry that calls toggleRead()
